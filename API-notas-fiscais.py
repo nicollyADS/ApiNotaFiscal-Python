@@ -3,17 +3,6 @@ import notas
 
 app = Flask(__name__)
 
-@app.route("/notas/fiscais", methods=['POST'])
-def inclui_nota():
-    nota = request.json
-    try:
-        notas.insert_nota(nota)
-        return nota, 201
-    except Exception as erro:
-        print(erro)
-        info = {"msg": "Nota nao cadastrada"}
-        return info, 404
-    
 
 @app.route("/notas/fiscais", methods=['GET'])
 def lista_notas():
@@ -61,12 +50,24 @@ def lista_nota_por_id(nota_id):
             }
             return NotaFiscal, 200
         else:
-            return {"msg": "Nota fiscal não encontrada"}, 404
+            return {"msg": "Nota fiscal nao encontrada"}, 404
     except Exception as erro:
         print(erro)
-        info = {"msg": "Não foi possível obter a nota fiscal"}
+        info = {"msg": "Nao foi possível obter a nota fiscal"}
         return info, 500
 
+
+@app.route("/notas/fiscais", methods=['POST'])
+def inclui_nota():
+    nota = request.json
+    try:
+        notas.insert_nota(nota)
+        return nota, 201
+    except Exception as erro:
+        print(erro)
+        info = {"msg": "Nota nao cadastrada"}
+        return info, 404
+    
 
 
 @app.route("/notas/fiscais/<int:nota_id>", methods=['PUT'])
