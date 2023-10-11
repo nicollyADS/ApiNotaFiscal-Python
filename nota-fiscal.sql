@@ -12,15 +12,5 @@ CREATE TABLE NotaFiscal (
     ChaveAcesso VARCHAR2(50) NOT NULL
 );
 
-INSERT INTO NotaFiscal (
-    ID, NumeroNota, DataEmissao, NomeEmitente, CNPJCPF_Emitente,
-    NomeDestinatario, CNPJCPF_Destinatario, ValorTotal, FormaPagamento,
-    Observacoes, ChaveAcesso
-)
-VALUES (
-    1, 12345, '2023-10-10', 'Emitente ABC Ltda', '123456789000101',
-    'Destinatario XYZ Ltda', '987654321000102', 1500.50,
-    'Cartão de Crédito', 'Observações sobre a nota fiscal',
-    '12345678901234567890123456789012345678901234567890'
-);
+SELECT * FROM NotaFiscal;
 
